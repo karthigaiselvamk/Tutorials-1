@@ -1,0 +1,8 @@
+1.  Start Chrome with this command
+"%localappdata%\Google\Chrome SxS\Application\chrome.exe" --user-data-dir=test --unsafely-treat-insecure-origin-as-secure=http://localhost:8080
+
+2.  Start the dev_appserver.py from the PARENT FOLDER of your project
+python "C:\Program Files (x86)\Google\google_appengine\dev_appserver.py" "<path to parent dir for project>"
+
+3. Navigate to this URL:
+    http://localhost:8080/_ah/api/explorer

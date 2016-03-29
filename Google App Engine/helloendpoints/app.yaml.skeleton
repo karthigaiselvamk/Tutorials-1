@@ -1,0 +1,16 @@
+application: <application name>
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+# Endpoints handler: Must be /_ah/spi. Apps send requests to /_ah/api, but these are handled at /_ah/spi!!
+- url: /_ah/spi/.*
+  script: helloworld_api.APPLICATION
+
+libraries:
+- name: pycrypto
+  version: latest
+- name: endpoints
+  version: 1.0
