@@ -218,7 +218,7 @@ pip-log.txt
 #################
 ## VS Code
 #################
-*.vscode/*
+*.vscode
 
 #################
 ## Google App Engine
