@@ -84,6 +84,49 @@ def curly_brackets():
     
     mo = haRegex.search('Ha')
     print(mo == None) # True
+    
+    
+def greedy_nongreedy():
+    greedyHaRegex = re.compile(r'(Ha){3,5}')
+    mo = greedyHaRegex.search('HaHaHaHaHa')
+    print(mo.group()) # HaHaHaHaHa
+    
+    nongreedyHaRegex = re.compile(r'(Ha){3,5}?')
+    mo = nongreedyHaRegex.search('HaHaHaHaHa')
+    print(mo.group()) # HaHaha
+    
+    
+def findall_method():
+    phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+    
+    mo = phoneNumRegex.search('Cell: 415-555-9999 Work: 212-555-0000')
+    print(mo.group()) # 415-555-9999
+    
+    mo = phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
+    print(mo) # ['415-555-9999', '212-555-0000']
+    
+    
+    phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')
+    mo = phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
+    print(mo) # [('415', '555', '9999'), ('212', '555', '0000')]
+    
+    
+def list_regex():
+    xmasRegex = re.compile(r'\d+\s\w+')
+    mo = xmasRegex.findall('12 drummers, 11 pipers, 10 lords, 9 ladies, ' +
+        '8 maids, 7 swans, 6 geese, 5 rings, 4 birds, 3 hens, 2 doves, ' +
+        '1 partridge')
+    print(mo) # ['12 drummers', '11 pipers', '10 lords', '9 ...]
+    
+    
+def characters():
+    vowelRegex = re.compile(r'[aeiouAEIOU]')
+    mo = vowelRegex.findall('RoboCop eats baby food. BABY FOOD.')
+    print(mo) # ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o', 'A', 'O', 'O']
+    
+    consonantRegex = re.compile(r'[^aeiouAEIOU]')
+    mo = consonantRegex.findall('RoboCop eats baby food. BABY FOOD.')
+    print(mo) # ['R', 'b', 'C', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ...]
         
         
 print("numbers():")
@@ -98,3 +141,11 @@ print("plus():")
 plus()
 print("curly_brackets():")
 curly_brackets()
+print("greedy_nongreedy():")
+greedy_nongreedy()
+print("findall_method():")
+findall_method()
+print("list_regex():")
+list_regex()
+print("characters():")
+characters()
