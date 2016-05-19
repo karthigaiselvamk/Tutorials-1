@@ -1,0 +1,11 @@
+{
+  "name": "create-desktop-apps-with-electron",
+  "version": "1.0.0",
+  "description": "Based on https://www.youtube.com/watch?v=ojX5yz35v4M",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
