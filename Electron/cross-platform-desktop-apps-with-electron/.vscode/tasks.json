@@ -1,0 +1,8 @@
+{
+	"version": "0.1.0",
+	"command": "%appdata%\\npm\\node_modules\\electron-prebuilt\\dist\\electron.exe",
+	"isShellCommand": true,
+	"args": [
+		"${workspaceRoot}/index.js"
+	]
+}
