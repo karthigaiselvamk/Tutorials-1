@@ -26,6 +26,8 @@
     this.router = new Router();
     this.router.init();
 
+    this.$todoList.addEventListener('click', this._doShowUrl)
+
     window.addEventListener('load', function () {
       this._updateFilterState();
     }.bind(this));
@@ -50,7 +52,7 @@
    */
   Controller.prototype.showAll = function () {
     this.model.read(function (data) {
-      this.$todoList.innerHTML = this.view.show(data);
+      this.$todoList.innerHTML = this._parseForURLs(this.view.show(data))
     }.bind(this));
   };
 
@@ -59,7 +61,7 @@
    */
   Controller.prototype.showActive = function () {
     this.model.read({ completed: 0 }, function (data) {
-      this.$todoList.innerHTML = this.view.show(data);
+      this.$todoList.innerHTML = this._parseForURLs(this.view.show(data))
     }.bind(this));
   };
 
@@ -68,7 +70,7 @@
    */
   Controller.prototype.showCompleted = function () {
     this.model.read({ completed: 1 }, function (data) {
-      this.$todoList.innerHTML = this.view.show(data);
+      this.$todoList.innerHTML = this._parseForURLs(this.view.show(data))
     }.bind(this));
   };
 
@@ -104,7 +106,7 @@
    * @param {object} label The label you want to edit the text of
    */
   Controller.prototype.editItem = function (id, label) {
-    var li =  label;
+    var li = label;
 
     // This finds the <label>'s parent <li>
     while (li.nodeName !== 'LI') {
@@ -120,7 +122,7 @@
 
         // Instead of re-rendering the whole view just update
         // this piece of it
-        label.innerHTML = value;
+        label.innerHTML = this._parseForURLs(value);
       } else if (value.length === 0) {
         // No value was entered in the input. We'll remove the todo item.
         this.removeItem(id);
@@ -140,10 +142,10 @@
     var input = document.createElement('input');
     input.className = 'edit';
 
-    // Get the innerHTML of the label instead of requesting the data from the
+    // Get the innerText of the label instead of requesting the data from the
     // ORM. If this were a real DB this would save a lot of time and would avoid
     // a spinner gif.
-    input.value = label.innerHTML;
+    input.value = label.innerText;
 
     li.appendChild(input);
 
@@ -176,7 +178,7 @@
   Controller.prototype.removeItem = function (id) {
     this.model.remove(id, function () {
       var ids = [].concat(id);
-      ids.forEach( function(id) {
+      ids.forEach(function (id) {
         this.$todoList.removeChild($$('[data-id="' + id + '"]'));
       }.bind(this));
       this._filter();
@@ -211,11 +213,11 @@
     var completed = checkbox.checked ? 1 : 0;
 
     this.model.update(ids, { completed: completed }, function () {
-      if ( ids.constructor != Array ) {
-        ids = [ ids ];
+      if (ids.constructor != Array) {
+        ids = [ids];
       }
 
-      ids.forEach( function(id) {
+      ids.forEach(function (id) {
         var listItem = $$('[data-id="' + id + '"]');
 
         if (!listItem) {
@@ -264,7 +266,7 @@
    * number of todos.
    */
   Controller.prototype._updateCount = function () {
-    this.model.getCount(function(todos) {
+    this.model.getCount(function (todos) {
       this.$todoItemCounter.innerHTML = this.view.itemCounter(todos.active);
 
       this.$clearCompleted.innerHTML = this.view.clearCompletedButton(todos.completed);
@@ -343,12 +345,42 @@
     $$('#filters [href="#/' + currentPage + '"]').className = 'selected';
   };
 
-   /**
-    * A getter for getting the current page
-    */
+  /**
+   * A getter for getting the current page
+   */
   Controller.prototype._getCurrentPage = function () {
     return document.location.hash.split('/')[1];
   };
+
+  Controller.prototype._parseForURLs = function (text) {
+    var re = /(https?:\/\/[^\s"<>,]+)/g;
+    return text.replace(re, '<a href="$1" data-src="$1">$1</a>');
+  };
+
+  Controller.prototype._doShowUrl = function (e) {
+    // Only applies to elements with data-src attributes
+    if (!e.target.hasAttribute('data-src'))
+      return
+
+    e.preventDefault()
+
+    var url = e.target.getAttribute('data-src')
+
+    chrome.app.window.create(
+      'webview.html',
+      { hidden: true }, // only show window when webview is configured
+      function (appWin) {
+        appWin.contentWindow.addEventListener('DOMContentLoaded',
+          function (e) {
+            // When window is loaded, set webview sporce
+            var webview = appWin.contentWindow.document.querySelector('webview')
+            webview.src = url
+            // Now we can show it
+            appWin.show()
+          })
+      }
+    )
+  }
 
   // Export to window
   window.app.Controller = Controller;
