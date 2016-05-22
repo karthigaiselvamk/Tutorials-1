@@ -10,7 +10,12 @@
         "alarms",
         "notifications",
         "webview",
-        "<all_urls>"
+        "<all_urls>",
+        {
+            "fileSystem": [
+                "write"
+            ]
+        }
     ],
     "app": {
         "background": {
