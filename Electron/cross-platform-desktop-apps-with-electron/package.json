@@ -1,0 +1,11 @@
+{
+  "name": "cross-platform-desktop-apps-with-electron",
+  "version": "1.0.0",
+  "description": "Based on https://www.youtube.com/watch?v=Xs3Oc4weZbw",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
