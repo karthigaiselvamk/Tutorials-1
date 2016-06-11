@@ -225,3 +225,11 @@ pip-log.txt
 #################
 *app.yaml
 Python2/Python Crash Course/Alien Invasion/.vscode/tasks.json
+
+
+
+**/node_modules*
+
+jsconfig.json
+
+**/angular-phonecat*
