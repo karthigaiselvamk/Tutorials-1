@@ -272,3 +272,5 @@ Python2/Python Crash Course/Alien Invasion/.vscode/tasks.json
 jsconfig.json
 
 **/angular-phonecat*
+
+**/angular.min.js
