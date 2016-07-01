@@ -1,4 +1,4 @@
-/// <reference path="angular.min.js" />
+/// <reference path="angular.js" />
 
 var myApp = angular
     .module("myModule", [])
