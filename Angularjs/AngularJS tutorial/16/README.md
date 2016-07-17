@@ -1,0 +1,1 @@
+Can be run in firefox
