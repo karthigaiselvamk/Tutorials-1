@@ -11,10 +11,11 @@ var app = angular
 
     function successCallBack(response) {
       $scope.employees = response.data;
+      $log.info(response);
     }
 
     function errorCallBack(response) {
       $scope.error = response.data;
     }
-    
+
   });
