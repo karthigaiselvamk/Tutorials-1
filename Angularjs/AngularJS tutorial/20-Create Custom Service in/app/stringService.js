@@ -2,22 +2,22 @@
 
 app.factory('stringService', () => {
     return {
-        processString: function(input) {
+        processString: (input) => {
           if(!input) {
             return input;
           }
       
-        var output = "";
+          var output = "";
 
-        for(i = 0; i < input.length; i++) {
-          if(i > 0 && input[i] == input[i].toUpperCase())
-            output = output + " ";
+          for(i = 0; i < input.length; i++) {
+            if(i > 0 && input[i] == input[i].toUpperCase())
+              output = output + " ";
 
-          output += input[i];
+            output += input[i];
+          }
+
+          return output;
         }
-
-        return output;
-      }
     };
 
 });
