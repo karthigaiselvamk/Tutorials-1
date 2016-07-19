@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "name": "India",
+        "cities": [
+            {
+                "name": "Mumbai"
+            },
+            {
+                "name": "Delhi"
+            },
+            {
+                "name": "Bangalore"
+            },
+            {
+                "name": "Chennai"
+            },
+            {
+                "name": "Hydrabad"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "USA",
+        "cities": [
+            {
+                "name": "New York"
+            },
+            {
+                "name": "Los Angeles"
+            },
+            {
+                "name": "Chicago"
+            },
+            {
+                "name": "Houston"
+            },
+            {
+                "name": "Philadelphia"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "UK",
+        "cities": [
+            {
+                "name": "London"
+            },
+            {
+                "name": "Birmingham"
+            },
+            {
+                "name": "Coventry"
+            },
+            {
+                "name": "Liverpool"
+            },
+            {
+                "name": "Manchester"
+            }
+        ]
+    }
+]
