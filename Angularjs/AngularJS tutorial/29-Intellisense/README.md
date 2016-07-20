@@ -1,0 +1,1 @@
+For Visual Studio. Ignored.
