@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Mark",
+        "gender": "Male",
+        "city": "London"
+    },
+    {
+        "name": "John",
+        "gender": "Male",
+        "city": "Chennai"
+    },
+    {
+        "name": "Sara",
+        "gender": "Female",
+        "city": "Sydney"
+    },
+    {
+        "name": "Tom",
+        "gender": "Male",
+        "city": "New York"
+    },
+    {
+        "name": "Pam",
+        "gender": "Male",
+        "city": "Los Angeles"
+    },
+    {
+        "name": "Catherine",
+        "gender": "Female",
+        "city": "Chicago"
+    },
+    {
+        "name": "Mary",
+        "gender": "Female",
+        "city": "Houston"
+    },
+    {
+        "name": "Mike",
+        "gender": "Male",
+        "city": "Phoenix"
+    },
+    {
+        "name": "Rosie",
+        "gender": "Female",
+        "city": "Manchester"
+    },
+    {
+        "name": "Sasha",
+        "gender": "Female",
+        "city": "Hyderabad"
+    }
+]
