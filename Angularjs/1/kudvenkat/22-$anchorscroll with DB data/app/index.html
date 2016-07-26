@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="script/script.js"></script>
+    <link href="css/styles.css" rel="stylesheet"></link>
+</head>
+
+<body ng-controller="myController">
+
+    <span ng-repeat="country in countries">
+        <button ng-click="scrollTo(country.name)">{{ country.name }}</button>
+    </span>
+    <br/><br/>
+    <div class="containerDiv">
+        <fieldset ng-repeat="country in countries" id="{{ country.name }}">
+            <legend>{{ country.name }}</legend>
+            <ul>
+                <li ng-repeat="city in country.cities">
+                    {{ city.name }}
+                </li>
+            </ul>
+        </fieldset>
+    </div>
+
+</body>
+
+</html>
