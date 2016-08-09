@@ -1,0 +1,1 @@
+https://developer.mozilla.org/en-US/docs/Mozilla/B2G_OS/API/Camera_API/Introduction
